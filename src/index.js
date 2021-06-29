@@ -15,7 +15,7 @@ app.get('/', (req, res) => {
   res.json({
     message: `Welcome to tokenStats`,
     desc: "It gives you live token info",
-    documentation: `https://github.com/tokenstats`,
+    documentation: `https://github.com/iamnotstatic/tokenstats`,
   });
 });
 
