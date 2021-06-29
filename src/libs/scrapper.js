@@ -19,6 +19,7 @@ const ethScapper = async (url) => {
 
   const data = await page.evaluate(() => {
     let tokenInfo = document?.querySelector('.token-info-list')?.textContent;
+    let tokenName = document?.querySelector('.erc-wallet').textContent;
 
     let price = document?.querySelector('.pair-price')?.textContent;
 
@@ -39,6 +40,7 @@ const ethScapper = async (url) => {
     let totalSupply = values?.split(' ')[14];
 
     return {
+      tokenName: tokenName.split('/')[1],
       priceUSD,
       price,
       marketCapUSD,
@@ -74,6 +76,7 @@ const bscScrapper = async (url) => {
 
   const data = await page.evaluate(() => {
     let tokenInfo = document?.querySelector('.token-info-list')?.textContent;
+    let tokenName = document?.querySelector('.erc-wallet').textContent;
 
     let price = document?.querySelector('.pair-price')?.textContent;
 
@@ -94,6 +97,7 @@ const bscScrapper = async (url) => {
     let totalSupply = values?.split(' ')[14];
 
     return {
+      tokenName: tokenName.split('/')[1],
       priceUSD,
       price,
       marketCapUSD,

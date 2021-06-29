@@ -14,7 +14,8 @@ app.use(cors());
 app.get('/', (req, res) => {
   res.json({
     message: `Welcome to tokenStats`,
-    descript: 'Visit https://github.com/tokenstats for usage guide',
+    desc: "It gives you live token info",
+    documentation: `https://github.com/tokenstats`,
   });
 });
 
