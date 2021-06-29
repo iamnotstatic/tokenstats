@@ -67,7 +67,7 @@ GET /api/token/ HTTP/1.1
 Accept: application/json
 Content-Type: application/json
 
-parmas {
+params {
     "network": "eth",
     "pair": "0xfcc3a312a65ffca5d54e61a7d0e6d95e98752345",
 }
