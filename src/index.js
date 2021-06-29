@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const { ethScapper, bscScrapper } = require('./libs/scrapper');
+require('dotenv').config();
 
 const app = express();
 
@@ -17,21 +18,29 @@ app.get('/', (req, res) => {
   });
 });
 
-app.get('/api/token/bsc', async (req, res, next) => {
+app.get('/api/token', async (req, res, next) => {
   try {
-    const data = await bscScrapper(req.query.url);
-    return res.json(data);
-  } catch (error) {
-    console.log(error);
-  }
-});
+    const { network, pair } = req.query;
+    const url = `${process.env.DEXTOOLS_URL}${
+      network === 'bsc' ? 'pancakeswap' : network === 'eth' ? 'uniswap' : null
+    }/pair-explorer/${pair}`;
 
-app.get('/api/token/eth', async (req, res, next) => {
-  try {
-    const data = await ethScapper(req.query.url);
-    return res.json(data);
+    if (network === 'eth') {
+      const data = await ethScapper(url);
+      return res.json(data);
+    } else if (network === 'bsc') {
+      const data = await bscScrapper(url);
+      return res.json(data);
+    } else {
+      res.status(400).json({ message: 'invalid network', status: 'success' });
+    }
   } catch (error) {
-    console.log(error);
+    res
+      .status(500)
+      .json({
+        message: 'Something went wrong, try again later',
+        status: 'failed',
+      });
   }
 });
 

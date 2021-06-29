@@ -25,14 +25,18 @@ const ethScapper = async (url) => {
     let priceUSD = tokenInfo?.split(' ')[2];
     let tokenToChain = tokenInfo?.split(' ')[6];
     let holders = tokenInfo?.split(' ')[15];
+    let totalLiquidity = tokenInfo
+      .split(' ')[9]
+      .split(':')[1]
+      .replace('Daily', '');
+    let marketCapUSD = tokenInfo.split(' ')[19].replace('View', '');
 
     let element = document.querySelector('.badge-info');
     element.click();
     let values = document?.querySelector('.modal-body')?.textContent;
 
     let chainToToken = values?.split(' ')[8];
-    let marketCapUSD = values?.split(' ')[2].replace('Circ.', '');
-    let totalSupply = values?.split(' ')[18];
+    let totalSupply = values?.split(' ')[14];
 
     return {
       priceUSD,
@@ -40,6 +44,7 @@ const ethScapper = async (url) => {
       marketCapUSD,
       tokenToChain,
       totalSupply,
+      totalLiquidity,
       holders,
       chainToToken,
     };
@@ -75,14 +80,18 @@ const bscScrapper = async (url) => {
     let priceUSD = tokenInfo?.split(' ')[1];
     let tokenToChain = tokenInfo?.split(' ')[5];
     let holders = tokenInfo?.split(' ')[14];
+    let totalLiquidity = tokenInfo
+      .split(' ')[8]
+      .split(':')[1]
+      .replace('Daily', '');
+    let marketCapUSD = tokenInfo.split(' ')[18].replace('View', '');
 
     let element = document.querySelector('.badge-info');
     element.click();
     let values = document?.querySelector('.modal-body')?.textContent;
 
     let chainToToken = values?.split(' ')[8];
-    let marketCapUSD = values?.split(' ')[2].replace('Circ.', '');
-    let totalSupply = values?.split(' ')[18];
+    let totalSupply = values?.split(' ')[14];
 
     return {
       priceUSD,
@@ -90,6 +99,7 @@ const bscScrapper = async (url) => {
       marketCapUSD,
       tokenToChain,
       totalSupply,
+      totalLiquidity,
       holders,
       chainToToken,
     };
