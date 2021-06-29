@@ -100,4 +100,4 @@ const bscScrapper = async (url) => {
   return data;
 };
 
-export { ethScapper, bscScrapper };
+module.exports = { ethScapper, bscScrapper };

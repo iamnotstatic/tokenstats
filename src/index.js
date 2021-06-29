@@ -1,10 +1,10 @@
 const express = require('express');
 const cors = require('cors');
-const { ethScapper, bscScrapper } = require('./libs/scapper');
+const { ethScapper, bscScrapper } = require('./libs/scrapper');
 
 const app = express();
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8000;
 
 app.use(express.json());
 
