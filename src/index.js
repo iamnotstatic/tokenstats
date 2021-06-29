@@ -13,11 +13,11 @@ app.use(cors());
 app.get('/', (req, res) => {
   res.json({
     message: `Welcome to tokenStats`,
-    descript: 'Visit https://github.com/iamnotstatic',
+    descript: 'Visit https://github.com/tokenstats for usage guide',
   });
 });
 
-app.get('/api/token/eth', async (req, res, next) => {
+app.get('/api/token/bsc', async (req, res, next) => {
   try {
     const data = await bscScrapper(req.query.url);
     return res.json(data);
