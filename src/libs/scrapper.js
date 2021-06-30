@@ -30,9 +30,10 @@ const ethScapper = async (url) => {
       .split(' ')[9]
       .split(':')[1]
       .replace('Daily', '');
-    let marketCapUSD = tokenInfo.split(' ')[19].replace('View', '');
+    let marketCapUSD = tokenInfo?.split(' ')[19].replace('View', '');
+    let totalTx = tokenInfo?.split(' ')[14].replace('Holders:', '');
 
-    let element = document.querySelector('.badge-info');
+    let element = document?.querySelector('.badge-info');
     element.click();
     let values = document?.querySelector('.modal-body')?.textContent;
 
@@ -48,6 +49,7 @@ const ethScapper = async (url) => {
       totalSupply,
       totalLiquidity,
       holders,
+      totalTx,
       chainToToken,
     };
   });
@@ -87,7 +89,8 @@ const bscScrapper = async (url) => {
       .split(' ')[8]
       .split(':')[1]
       .replace('Daily', '');
-    let marketCapUSD = tokenInfo.split(' ')[18].replace('View', '');
+    let marketCapUSD = tokenInfo?.split(' ')[18].replace('View', '');
+    let totalTx = tokenInfo?.split(' ')[13].replace('Holders:', '');
 
     let element = document.querySelector('.badge-info');
     element.click();
@@ -105,6 +108,7 @@ const bscScrapper = async (url) => {
       totalSupply,
       totalLiquidity,
       holders,
+      totalTx,
       chainToToken,
     };
   });

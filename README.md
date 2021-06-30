@@ -89,6 +89,7 @@ Content-Type: application/json
     "totalSupply": "20,000,000",
     "totalLiquidity": "$344,084.59",
     "holders": "1909",
+    "totalTx": 5000,
     "chainToToken": "15827.35823119"
 }
 ```
