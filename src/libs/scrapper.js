@@ -2,7 +2,7 @@ const puppeteer = require('puppeteer');
 
 const ethScapper = async (url) => {
   const browser = await puppeteer.launch({
-    headless: false,
+    headless: true,
     args: ['--incognito', '--no-sandbox', '--single-process', '--no-zygote'],
   });
 

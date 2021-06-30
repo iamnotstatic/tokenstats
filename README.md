@@ -82,15 +82,15 @@ Content-Type: application/json
 
 {
     "tokenName": "Token Name",
-    "priceUSD": "$1.14031527",
-    "price": "$1.14031527",
-    "marketCapUSD": "$2,403,152.67",
-    "tokenToChain": "0.00006565",
-    "totalSupply": "20,000,000",
-    "totalLiquidity": "$344,084.59",
-    "holders": "1909",
-    "totalTx": 5000,
-    "chainToToken": "15827.35823119"
+    "priceUSD": 0.03259909,
+    "price": 0.03259909,
+    "marketCapUSD": 1325990.92,
+    "tokenToChain": 0.0001113,
+    "chainToToken": 9199.33598129,
+    "totalSupply": 20000000,
+    "totalLiquidityUSD": 25412.3,
+    "holders": 2930,
+    "totalTx": 5662
 }
 ```
 
