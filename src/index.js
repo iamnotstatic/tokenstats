@@ -36,6 +36,7 @@ app.get('/api/token', async (req, res, next) => {
       res.status(400).json({ message: 'invalid network', status: 'success' });
     }
   } catch (error) {
+    console.log(error);
     res
       .status(500)
       .json({

@@ -2,7 +2,7 @@ const puppeteer = require('puppeteer');
 
 const ethScapper = async (url) => {
   const browser = await puppeteer.launch({
-    headless: true,
+    headless: false,
     args: ['--incognito', '--no-sandbox', '--single-process', '--no-zygote'],
   });
 
@@ -21,36 +21,52 @@ const ethScapper = async (url) => {
     let tokenInfo = document?.querySelector('.token-info-list')?.textContent;
     let tokenName = document?.querySelector('.erc-wallet').textContent;
 
-    let price = document?.querySelector('.pair-price')?.textContent;
+    let price = document
+      ?.querySelector('.pair-price')
+      ?.textContent.replace('$', '')
+      .replaceAll(',', '');
 
-    let priceUSD = tokenInfo?.split(' ')[2];
-    let tokenToChain = tokenInfo?.split(' ')[6];
+    let priceUSD = tokenInfo
+      ?.split(' ')[2]
+      .replace('$', '')
+      .replaceAll(',', '');
+    let tokenToChain = tokenInfo?.split(' ')[6].replaceAll(',', '');
     let holders = tokenInfo?.split(' ')[15];
-    let totalLiquidity = tokenInfo
+    let totalLiquidityUSD = tokenInfo
       .split(' ')[9]
       .split(':')[1]
-      .replace('Daily', '');
-    let marketCapUSD = tokenInfo?.split(' ')[19].replace('View', '');
-    let totalTx = tokenInfo?.split(' ')[14].replace('Holders:', '');
+      .replace('Daily', '')
+      .replace('$', '')
+      .replaceAll(',', '');
+    let marketCapUSD = tokenInfo
+      ?.split(' ')[19]
+      .replace('View', '')
+      .replace('$', '')
+      .replaceAll(',', '');
+
+    let totalTx = tokenInfo
+      ?.split(' ')[14]
+      .replace('Holders:', '')
+      .replaceAll(',', '');
 
     let element = document?.querySelector('.badge-info');
     element.click();
     let values = document?.querySelector('.modal-body')?.textContent;
 
-    let chainToToken = values?.split(' ')[8];
-    let totalSupply = values?.split(' ')[14];
+    let chainToToken = values?.split(' ')[8].replaceAll(',', '');
+    let totalSupply = values?.split(' ')[14].replaceAll(',', '');
 
     return {
       tokenName: tokenName.split('/')[1],
-      priceUSD,
-      price,
-      marketCapUSD,
-      tokenToChain,
-      totalSupply,
-      totalLiquidity,
-      holders,
-      totalTx,
-      chainToToken,
+      priceUSD: parseFloat(priceUSD),
+      price: parseFloat(price),
+      marketCapUSD: parseFloat(marketCapUSD),
+      tokenToChain: parseFloat(tokenToChain),
+      chainToToken: parseFloat(chainToToken),
+      totalSupply: parseFloat(totalSupply),
+      totalLiquidityUSD: parseFloat(totalLiquidityUSD),
+      holders: parseFloat(holders),
+      totalTx: parseFloat(totalTx),
     };
   });
 
@@ -80,36 +96,52 @@ const bscScrapper = async (url) => {
     let tokenInfo = document?.querySelector('.token-info-list')?.textContent;
     let tokenName = document?.querySelector('.erc-wallet').textContent;
 
-    let price = document?.querySelector('.pair-price')?.textContent;
+    let price = document
+      ?.querySelector('.pair-price')
+      ?.textContent.replace('$', '')
+      .replaceAll(',', '');
 
-    let priceUSD = tokenInfo?.split(' ')[1];
-    let tokenToChain = tokenInfo?.split(' ')[5];
-    let holders = tokenInfo?.split(' ')[14];
-    let totalLiquidity = tokenInfo
+    let priceUSD = tokenInfo
+      ?.split(' ')[1]
+      .replace('$', '')
+      .replaceAll(',', '');
+    let tokenToChain = tokenInfo?.split(' ')[5].replaceAll(',', '');
+    let holders = tokenInfo?.split(' ')[14].replaceAll(',', '');
+    let totalLiquidityUSD = tokenInfo
       .split(' ')[8]
       .split(':')[1]
-      .replace('Daily', '');
-    let marketCapUSD = tokenInfo?.split(' ')[18].replace('View', '');
-    let totalTx = tokenInfo?.split(' ')[13].replace('Holders:', '');
+      .replace('Daily', '')
+      .replace('$', '')
+      .replaceAll(',', '');
+    let marketCapUSD = tokenInfo
+      ?.split(' ')[18]
+      .replace('View', '')
+      .replace('$', '')
+      .replaceAll(',', '');
+    let totalTx = tokenInfo
+      ?.split(' ')[13]
+      .replace('Holders:', '')
+      .replace(',', '')
+      .replaceAll(',', '');
 
     let element = document.querySelector('.badge-info');
     element.click();
     let values = document?.querySelector('.modal-body')?.textContent;
 
-    let chainToToken = values?.split(' ')[8];
-    let totalSupply = values?.split(' ')[14];
+    let chainToToken = values?.split(' ')[8].replaceAll(',', '');
+    let totalSupply = values?.split(' ')[14].replaceAll(',', '');
 
     return {
       tokenName: tokenName.split('/')[1],
-      priceUSD,
-      price,
-      marketCapUSD,
-      tokenToChain,
-      totalSupply,
-      totalLiquidity,
-      holders,
-      totalTx,
-      chainToToken,
+      priceUSD: parseFloat(priceUSD),
+      price: parseFloat(price),
+      marketCapUSD: parseFloat(marketCapUSD),
+      tokenToChain: parseFloat(tokenToChain),
+      chainToToken: parseFloat(chainToToken),
+      totalSupply: parseFloat(totalSupply),
+      totalLiquidityUSD: parseFloat(totalLiquidityUSD),
+      holders: parseFloat(holders),
+      totalTx: parseFloat(totalTx),
     };
   });
 
