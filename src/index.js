@@ -3,18 +3,16 @@ const cors = require('cors');
 const { ethScapper, bscScrapper } = require('./libs/scrapper');
 require('dotenv').config();
 
-const app = express();
-
 const PORT = process.env.PORT || 8000;
 
-app.use(express.json());
-
+const app = express();
 app.use(cors());
+app.use(express.json());
 
 app.get('/', (req, res) => {
   res.json({
     message: `Welcome to tokenStats`,
-    desc: "It gives you live token info",
+    desc: 'It gives you live token info',
     documentation: `https://github.com/iamnotstatic/tokenstats`,
   });
 });
@@ -37,12 +35,10 @@ app.get('/api/token', async (req, res, next) => {
     }
   } catch (error) {
     console.log(error);
-    res
-      .status(500)
-      .json({
-        message: 'Something went wrong, try again later',
-        status: 'failed',
-      });
+    res.status(500).json({
+      message: 'Something went wrong, try again later',
+      status: 'failed',
+    });
   }
 });
 
