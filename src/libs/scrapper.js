@@ -39,7 +39,7 @@ const ethScapper = async (url) => {
       .replace('$', '')
       .replaceAll(',', '');
     let marketCapUSD = tokenInfo
-      ?.split(' ')[19]
+      ?.split(' ')[21]
       .replace('View', '')
       .replace('$', '')
       .replaceAll(',', '');
@@ -53,8 +53,8 @@ const ethScapper = async (url) => {
     element.click();
     let values = document?.querySelector('.modal-body')?.textContent;
 
-    let chainToToken = values?.split(' ')[8].replaceAll(',', '');
-    let totalSupply = values?.split(' ')[14].replaceAll(',', '');
+    let chainToToken = values?.split(' ')[6].replaceAll(',', '');
+    let totalSupply = values?.split(' ')[12].replaceAll(',', '');
 
     return {
       tokenName: tokenName.split('/')[1],
@@ -114,7 +114,7 @@ const bscScrapper = async (url) => {
       .replace('$', '')
       .replaceAll(',', '');
     let marketCapUSD = tokenInfo
-      ?.split(' ')[18]
+      ?.split(' ')[20]
       .replace('View', '')
       .replace('$', '')
       .replaceAll(',', '');
@@ -128,8 +128,8 @@ const bscScrapper = async (url) => {
     element.click();
     let values = document?.querySelector('.modal-body')?.textContent;
 
-    let chainToToken = values?.split(' ')[8].replaceAll(',', '');
-    let totalSupply = values?.split(' ')[14].replaceAll(',', '');
+    let chainToToken = values?.split(' ')[6].replaceAll(',', '');
+    let totalSupply = values?.split(' ')[12].replaceAll(',', '');
 
     return {
       tokenName: tokenName.split('/')[1],
