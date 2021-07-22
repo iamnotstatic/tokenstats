@@ -11,7 +11,7 @@ app.use(express.json());
 
 app.get('/', (req, res) => {
   res.json({
-    message: `Welcome to tokenStats`,
+    message: `Welcome to Token Stats`,
     desc: 'It gives you live token info',
     documentation: `https://github.com/iamnotstatic/tokenstats`,
   });
